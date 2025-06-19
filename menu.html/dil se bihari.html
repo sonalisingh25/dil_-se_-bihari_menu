@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dil Se Bihari - Menu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0ece3; /* Soft aesthetic background */
+    }
+
+    .overlay {
+      min-height: 100vh;
+      padding: 30px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('7a6b7c13-08dc-45e7-9a39-d07ba9a066d8.jpg') no-repeat center center;
+      background-size: cover;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: center;
+      color: #fff;
+    }
+
+    h1 {
+      color: #ffc266;
+      margin-bottom: 10px;
+    }
+
+    .category {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .category h2 {
+      color: #ffd699;
+      border-bottom: 2px solid #ffc266;
+      padding-bottom: 5px;
+    }
+
+    ul.menu-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul.menu-list li {
+      background: rgba(255, 255, 255, 0.2);
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1em;
+      color: #000;
+    }
+
+    .order-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: #25D366;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .qr-code {
+      margin-top: 30px;
+    }
+
+    .qr-code img {
+      width: 150px;
+      height: 150px;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #ccc;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>🍽️ Dil Se Bihari - Menu</h1>
+      <p>Scan the QR code below to view this menu online.</p>
+
+      <div class="qr-code">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://yourmenu.page.link&size=150x150" alt="QR Code">
+      </div>
+
+      <div id="menu"></div>
+
+      <a class="order-btn" href="https://wa.me/91XXXXXXXXXX?text=Hello%20Dil%20Se%20Bihari%2C%20I%20want%20to%20place%20an%20order." target="_blank">
+        📲 Order Now on WhatsApp
+      </a>
+
+      <footer>© 2025 Dil Se Bihari. All rights reserved.</footer>
+    </div>
+  </div>
+
+  <script>
+    const menuData = {
+      "Snacks": [
+        { name: "Nakken", price: 20 },
+        { name: "Samosa", price: 15 },
+        { name: "Litti Chokha", price: 40 }
+      ],
+      "Chaat": [
+        { name: "Aloo Chaat", price: 30 },
+        { name: "Dahi Puri", price: 35 },
+        { name: "Papdi Chaat", price: 30 }
+      ],
+      "Sweets": [
+        { name: "Rasgulla", price: 10 },
+        { name: "Gulab Jamun", price: 15 },
+        { name: "Khaja", price: 20 }
+      ]
+    };
+
+    const menuContainer = document.getElementById('menu');
+
+    for (const category in menuData) {
+      const section = document.createElement('div');
+      section.className = 'category';
+
+      const heading = document.createElement('h2');
+      heading.textContent = category;
+      section.appendChild(heading);
+
+      const list = document.createElement('ul');
+      list.className = 'menu-list';
+
+      menuData[category].forEach(item => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${item.name}</span><span>₹${item.price}</span>`;
+        list.appendChild(li);
+      });
+
+      section.appendChild(list);
+      menuContainer.appendChild(section);
+    }
+  </script>
+</body>
+</html>
+
+
+
+
